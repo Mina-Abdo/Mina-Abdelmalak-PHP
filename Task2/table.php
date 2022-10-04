@@ -118,17 +118,11 @@ $users = [
                                                         echo '<ul><li>'.$data1.'</li></ul>';
                                                     } ?>
                                                 </td>
-                                                <!-- <td>
-                                                    <?php foreach($val as $data2){
-                                                        echo '<ul><li>'.$data2.'</li></ul>';
-                                                    } ?>
-                                                </td> -->
                                                 
                                             <?php }
                                         }?>
                                         </tr>
-                                <?php }
-                                ?>
+                                <?php }?>
 
                         </tbody>
                 </table>
