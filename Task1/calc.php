@@ -16,7 +16,7 @@
         $Number1 = $_POST['Number1']??"";
         $Number2 = $_POST['Number2']??"";
         if($_POST){
-            if($_POST['operator'] == "div"){
+            if($_POST['operator'] == "/"){
                 $message = ((float)$_POST['Number1'] / (float)$_POST['Number2']);
             }elseif($_POST['operator'] == "*"){
                 $message = (float)$_POST['Number1'] * (float)$_POST['Number2'];
