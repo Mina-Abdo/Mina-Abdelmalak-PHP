@@ -100,18 +100,23 @@ $users = [
                                 <?php 
                                     foreach($users as $key=>$user){?>
                                     <tr>
-                                        <?php foreach($user as $val){
+                                        <?php 
+                                        foreach($user as $key=>$val){
                                             if(gettype($val)==='integer'){
                                                 echo '<td>'. $val .'</td>';
                                             }
                                             elseif(gettype($val)==='string'){
                                                 echo '<td>'. $val .'</td>';
                                             }elseif(gettype($val)==='object'){
-                                                    if($val->gender === 'f'){
-                                                        echo '<td>Female</td>';
-                                                    }else{
-                                                        echo '<td>Male</td>';
+                                                foreach($val as $property=>$propertyVal){
+                                                    if($key === 'gender' && $property==="gender"){
+                                                        if($propertyVal==="f"){
+                                                            echo '<td>Female</td>';
+                                                        }elseif($propertyVal==="m"){
+                                                            echo '<td>Male</td>';
+                                                        }
                                                     }
+                                                }
                                             }elseif(gettype($val)==='array'){?>
                                                 <td>
                                                     <?php foreach($val as $data1){
