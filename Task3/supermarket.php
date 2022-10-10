@@ -5,8 +5,17 @@ function drawCity($citiesVar , $val=true){
     $citiesSelect = "
         <select class='form-select' name='city'>
         <option>Select delivery location</option>";
+        
     foreach ($citiesVar as $cityName => $delivery) {
-        $citiesSelect .= "<option value='".$cityName."'>".$cityName."</option>";
+        if(empty($_POST['city'])){
+            $citiesSelect .= "<option value='".$cityName."'>".$cityName."</option>";
+        }else{
+            if($cityName ===$_POST['city']){
+                $citiesSelect .= "<option value='".$cityName."' selected>".$cityName."</option>";
+            }
+            $citiesSelect .= "<option value='".$cityName."'>".$cityName."</option>";
+        }
+        
     }
     $citiesSelect .= "</select>";
     return $citiesSelect;
@@ -101,11 +110,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                                 $recieptTable .= "<td class='text-center'>".$_POST[$i.$detailKey]."</td>";
                                             }elseif($detailKey==='Subtotal'){
                                                 // $subtotal+= ($_POST[$i.'Quantity']*$_POST[$i.'Price']);
-                                                $recieptTable .= "<td class='text-center'>".($_POST[$i.'Quantity']*$_POST[$i.'Price'])." EGP</td>";
+                                                $recieptTable .= "<td class='text-center'>".((float)$_POST[$i.'Quantity']*(float)$_POST[$i.'Price'])." EGP</td>";
                                             }
                                             
                                         }
-                                        $subtotal+= ($_POST[$i.'Quantity']*$_POST[$i.'Price']);
+                                        $subtotal+= ((float)$_POST[$i.'Quantity']*(float)$_POST[$i.'Price']);
                                         
                             $recieptTable .= "</tr>";
                             
